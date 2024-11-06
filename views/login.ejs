@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Definir el conjunto de caracteres para la página (UTF-8) -->
     <meta charset="UTF-8">
-    
-    <!-- Asegurarse de que la página se vea bien en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Título de la página -->
-    <title>Login</title>
-    
-    <!-- Incluir el CSS de Bootstrap desde un CDN para darle estilo a los elementos -->
+    <title><%= title %></title>
+    <!-- Incluyendo Bootstrap y FontAwesome para los iconos -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="bg-success text-white">
-    <!-- Contenedor principal de la página -->
-    <div class="container">
-        <!-- Título principal de la sección de inicio de sesión -->
-        <h2 class="mt-5">Iniciar Sesión</h2>
-        
-        <!-- Formulario de inicio de sesión que utiliza el método GET y envía los datos a la ruta /login -->
-        <form action="/login" method="get" class="mt-4">
-            
-            <!-- Campo de entrada para el nombre -->
-            <div class="form-group">
-                <!-- Etiqueta para el campo nombre -->
-                <label for="nombre">Nombre</label>
-                <!-- Campo de texto donde el usuario puede ingresar su nombre -->
-                <input type="text" class="form-control" id="nombre" name="nombre">
+<body class="bg-login">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <!-- Card de Login -->
+        <div class="card p-5 shadow-lg login-card">
+            <!-- Logo -->
+            <div class="text-center mb-4">
+                <img src="https://via.placeholder.com/500x500" alt="Logo" class="img-fluid logo">
             </div>
-            
-            <!-- Campo de entrada para la cédula -->
-            <div class="form-group">
-                <!-- Etiqueta para el campo cédula -->
-                <label for="cedula">Cédula</label>
-                <!-- Campo de texto donde el usuario puede ingresar su cédula -->
-                <input type="text" class="form-control" id="cedula" name="cedula">
-            </div>
-            
-            <!-- Botón para enviar el formulario -->
-            <button type="submit" class="btn btn-light">Iniciar Sesión</button>
-        </form>
+            <h2 class="text-center mb-4 text-white"><%= message %></h2>
+            <form action="/login" method="POST">
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="nombre" class="text-white">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                </div>
+                <!-- Cédula -->
+                <div class="form-group">
+                    <label for="cedula" class="text-white">Cédula</label>
+                    <input type="text" class="form-control" id="cedula" name="cedula" required placeholder="Ingresa tu cédula">
+                </div>
+                <!-- Botón de inicio de sesión -->
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
 
 
 

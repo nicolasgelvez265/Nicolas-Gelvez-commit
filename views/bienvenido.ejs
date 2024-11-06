@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Definir el conjunto de caracteres para la página (UTF-8) -->
     <meta charset="UTF-8">
-    
-    <!-- Asegurarse de que la página se vea bien en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Título de la página -->
-    <title>Bienvenido</title>
-    
-    <!-- Incluir el CSS de Bootstrap desde un CDN para darle estilo a los elementos -->
+    <title><%= title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="bg-success text-white">
-    <!-- Contenedor principal de la página -->
-    <div class="container">
-        
-        <!-- Mensaje de bienvenida, inicialmente vacío y será modificado con JavaScript -->
-        <h1 id="welcome-message" class="mt-5"></h1>
-        
-        <!-- Título visible que dice "Bienvenido" -->
-        <h1>Bienvenido</h1>
-        
-        <!-- Botón para mostrar los datos personales, está ocultando los datos inicialmente -->
-        <button id="show-data" class="btn btn-light mt-3">Ver Datos Personales</button>
-        
-        <!-- Div donde se mostrarán los datos personales al hacer clic en el botón -->
-        <div class="mt-3" style="display: none;"></div>
+<body class="bg-welcome">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 text-white">
+        <div class="text-center welcome-card p-5 shadow-lg">
+            <h1 class="display-4 mb-4">¡Bienvenido, <%= user.primer_nombre %>!</h1>
+            <p><%= message %></p>
+
+            <button id="show-data" class="btn btn-light mt-3">Ver Datos Personales</button>
+            
+            <div id="personal-data" class="mt-3" style="display: none;">
+                <p><strong>Primer Nombre:</strong> <%= user.primer_nombre || 'No disponible' %></p>
+                <p><strong>Segundo Nombre:</strong> <%= user.segundo_nombre || 'No disponible' %></p>
+                <p><strong>Cédula:</strong> <%= user.cedula %></p>
+                <p><strong>Correo:</strong> <%= user.correo %></p>
+                <p><strong>Ciudad:</strong> <%= user.ciudad %></p>
+                <p><strong>Ocupación:</strong> <%= user.ocupacion %></p>
+                <p><strong>Fecha de Nacimiento:</strong> 
+                    <span id="fecha-nacimiento"><%= user.fecha_nacimiento %></span>
+                </p>
+            </div>
+        </div>
     </div>
     
-    <!-- Aquí podrías agregar un script para mostrar los datos personales cuando se haga clic en el botón -->
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Mostrar los datos personales al hacer clic en el botón
+        document.getElementById('show-data').addEventListener('click', function() {
+            var dataDiv = document.getElementById('personal-data');
+            if (dataDiv.style.display === 'none') {
+                dataDiv.style.display = 'block';
+            } else {
+                dataDiv.style.display = 'none';
+            }
+        });
+
+        // Formatear la fecha de nacimiento en formato YYYY-MM-DD
+        let fechaNacimiento = document.getElementById('fecha-nacimiento').textContent;
+        let fecha = new Date(fechaNacimiento);
+        let fechaFormateada = fecha.toISOString().split('T')[0];  // Solo tomamos la parte de la fecha (YYYY-MM-DD)
+        document.getElementById('fecha-nacimiento').textContent = fechaFormateada;
+    </script>
 </body>
 </html>
+
+
+
+
+
 
 
 

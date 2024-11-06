@@ -1,0 +1,22 @@
+CREATE DATABASE jefe;
+USE jefe;
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    primer_nombre VARCHAR(100),
+    segundo_nombre VARCHAR(100) DEFAULT NULL,
+    tercer_nombre VARCHAR(100) DEFAULT NULL,
+    cuarto_nombre VARCHAR(100) DEFAULT NULL,
+    telefono VARCHAR(20),
+    fecha_nacimiento DATE,
+    rh VARCHAR(3),
+    direccion TEXT,
+    correo VARCHAR(100),
+    ciudad VARCHAR(100),
+    cedula VARCHAR(50),
+    ocupacion VARCHAR(100)
+);
+
+INSERT INTO usuarios (primer_nombre, segundo_nombre, tercer_nombre,cuarto_nombre, telefono, fecha_nacimiento, rh, direccion, correo, ciudad, cedula, ocupacion) VALUES
+('Nicolas', 'Alexander', 'Gelvez','Perez','3133112771', '2007-12-25', 'A+', 'Calle 14 #41-49', 'nicolasgelvez2512@email.com', 'Arauca', '1116859958', 'Aprendiz');
